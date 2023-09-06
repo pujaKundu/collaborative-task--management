@@ -7,16 +7,26 @@ import {
   registerUser,
 } from "./utils/userAuthenticationUtils";
 
-import { Homepage, UserLogin, UserRegistration } from "./components/index";
+import {
+  Homepage,
+  UserLogin,
+  UserProfile,
+  UserRegistration,
+} from "./components/index";
 
 function App() {
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    // Load user data from local storage
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-    setUsers(storedUsers);
+    try {
+      // Load user data from local storage
+      const storedUsers = JSON.parse(localStorage.getItem("users")) ;
+      setUsers(storedUsers);
+    } catch (error) {
+     
+      console.error("LocalStorage error:", error);
+    }
   }, []);
 
   useEffect(() => {
@@ -40,7 +50,27 @@ function App() {
     <div id="root">
       <h3>Collaborative Task Manager</h3>
       <Router>
-        {!currentUser ? (
+        <Routes>
+          <Route path="/" element={<UserLogin loginUser={handleLoginUser} />} />
+          <Route
+            path="/register"
+            element={<UserRegistration registerUser={handleRegisterUser} />}
+          />
+          <Route
+            path="/homepage"
+            element={
+              <Homepage
+                handleLogoutUser={handleLogoutUser}
+                currentUser={currentUser}
+              />
+            }
+          />
+          <Route
+            path="/profile/:id"
+            element={<UserProfile user={currentUser} />}
+          />
+        </Routes>
+        {/* {!currentUser ? (
           <Routes>
             <Route
               path="/"
@@ -57,10 +87,9 @@ function App() {
               path="/homepage"
               element={<Homepage handleLogoutUser={handleLogoutUser} />}
             />
-
-          
+            <Route path="/profile/:id" element={<UserProfile />} />
           </Routes>
-        )}
+        )} */}
       </Router>
     </div>
   );

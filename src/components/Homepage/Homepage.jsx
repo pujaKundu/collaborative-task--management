@@ -12,13 +12,10 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import LoyaltyIcon from "@mui/icons-material/Loyalty";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
-import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
+
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 const drawerWidth = 240;
@@ -34,7 +31,11 @@ const ConfigurationComponent = () => {
 };
 
 const Homepage = (props) => {
-  const { window, handleLogoutUser } = props;
+    const { window, handleLogoutUser, currentUser } = props;
+    console.log("currentUser", JSON.stringify(currentUser)); 
+    const userId = currentUser?.id;
+    
+    
   const navigate = useNavigate();
 
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -55,17 +56,17 @@ const Homepage = (props) => {
       <Divider />
       <List>
         <List>
-          {/* <ListItem>
-            <Link to="/homepage">
+          <ListItem>
+            <Link to={`/profile/${userId}`}>
               <Button
                 color="inherit"
                 style={{ textDecoration: "none", color: "#3B185F" }}
               >
                 <DashboardIcon sx={{ marginRight: "5px" }} />
-                Dashboard
+                Profile
               </Button>
             </Link>
-          </ListItem> */}
+          </ListItem>
 
           <ListItem>
             <Button
@@ -149,16 +150,17 @@ const Homepage = (props) => {
           {drawer}
         </Drawer>
       </Box>
-      <Box
+      {/* <Box
         component="main"
         sx={{
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
-      >
+          >
+             
         <Toolbar />
-      </Box>
+      </Box> */}
     </Box>
   );
 };
