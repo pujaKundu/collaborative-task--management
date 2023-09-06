@@ -7,6 +7,10 @@
 
 /* common styles */
 
+h4{
+  color: rgb(92, 46, 134);
+}
+
 .label-text {
   font-weight: bold;
   text-align: left;
@@ -32,4 +36,9 @@
   background-color: rgb(9, 71, 185);
   color: white;
   margin-top: 10px;
+}
+
+.link-text{
+  margin-top: 10px;
+  color: blue;
 }

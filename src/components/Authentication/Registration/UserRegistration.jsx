@@ -1,8 +1,11 @@
 import { Box, TextField } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../../App.css";
 
 const UserRegistration = ({ registerUser }) => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -27,6 +30,9 @@ const UserRegistration = ({ registerUser }) => {
       profilePicture: "",
       bio: "",
     });
+    alert("Account created successfully");
+    //   redirect to login page
+    navigate("/");
   };
 
   return (

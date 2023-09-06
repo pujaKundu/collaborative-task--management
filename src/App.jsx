@@ -7,7 +7,7 @@ import {
   registerUser,
 } from "./utils/userAuthenticationUtils";
 
-import { UserLogin, UserRegistration } from "./components/index";
+import { Homepage, UserLogin, UserRegistration } from "./components/index";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -52,10 +52,14 @@ function App() {
             />
           </Routes>
         ) : (
-          <>
-            {/* <UserProfile user={currentUser} />
-          <button onClick={handleLogoutUser}>Logout</button> */}
-          </>
+          <Routes>
+            <Route
+              path="/homepage"
+              element={<Homepage handleLogoutUser={handleLogoutUser} />}
+            />
+
+          
+          </Routes>
         )}
       </Router>
     </div>
