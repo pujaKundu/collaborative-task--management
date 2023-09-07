@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,6 +10,12 @@ import TaskRow from "../TaskRow/TaskRow";
 
 const TaskList = ({ tasks }) => {
   const [taskList, setTaskList] = useState(tasks);
+
+  useEffect(() => {
+    // When the tasks prop changes, update the taskList state
+    setTaskList(tasks);
+  }, [tasks]);
+
   const handleUpdateStatus = (taskId, newStatus) => {
     // Find the task in the list and update its status
     const updatedTaskList = taskList.map((task) =>
@@ -39,7 +45,7 @@ const TaskList = ({ tasks }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {tasks.map((task) => (
+          {taskList.map((task) => (
             <TaskRow
               key={task?.id}
               task={task}

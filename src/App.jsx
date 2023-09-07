@@ -17,8 +17,14 @@ import {
 } from "./components/index";
 
 function App() {
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+
+  const [users, setUsers] = useState(() => {
+    const json = localStorage.getItem("users");
+    if (!json) return [];
+    return JSON.parse(json);
+  });
 
   useEffect(() => {
     try {
@@ -73,7 +79,6 @@ function App() {
 
           <Route path="/add-task" element={<TaskForm />} />
         </Routes>
-        
       </Router>
     </div>
   );

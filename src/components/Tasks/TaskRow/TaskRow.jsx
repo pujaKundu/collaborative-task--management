@@ -2,13 +2,13 @@ import { MenuItem, Select, TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
 
 const TaskRow = ({ task, onUpdateStatus }) => {
-  const { id, title, description, dueDate, priority, assignee, status } =
-    task || {};
+  const { id, title, description, dueDate, priority, assignee, status } = task;
   const [selectedStatus, setSelectedStatus] = useState(status);
 
-  const handleStatusChange = () => {
-    const newStatus = "completed";
+  const handleStatusChange = (e) => {
+    const newStatus = e.target.value;
     setSelectedStatus(newStatus);
+
     onUpdateStatus(id, newStatus);
   };
 
@@ -25,15 +25,16 @@ const TaskRow = ({ task, onUpdateStatus }) => {
       <TableCell align="right">{assignee}</TableCell>
       <TableCell align="right">{status}</TableCell>
       <TableCell align="right">
-        {/* <Select
+        <Select
           value={selectedStatus}
           onChange={handleStatusChange}
           label="Status"
+          name="status"
         >
+          <MenuItem value="pending">Pending</MenuItem>
           <MenuItem value="in progress">In Progress</MenuItem>
           <MenuItem value="completed">Completed</MenuItem>
-        </Select> */}
-        <span onClick={handleStatusChange}>Complete</span>
+        </Select>
       </TableCell>
     </TableRow>
   );

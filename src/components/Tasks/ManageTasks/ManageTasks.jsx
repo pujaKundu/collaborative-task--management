@@ -4,11 +4,17 @@ import TaskForm from "../TaskForm/TaskForm";
 import TaskList from "../TaskList/TaskList";
 
 const ManageTasks = () => {
-  const [tasks, setTasks] = useState([]);
+  // const [tasks, setTasks] = useState([]);
   const [isTaskFormOpen, setIsTaskFormOpen] = useState(false);
 
+  const [tasks, setTasks] = useState(() => {
+    const json = localStorage.getItem("tasks");
+    if (!json) return [];
+    return JSON.parse(json);
+  });
+
   useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const storedTasks = JSON.parse(localStorage.getItem("tasks")) ;
     setTasks(storedTasks);
   }, []);
 
@@ -22,12 +28,12 @@ const ManageTasks = () => {
     closeTaskForm();
   };
 
-  // const handleTaskComplete = (taskId) => {
-  //   const updatedTasks = tasks.map((task) =>
-  //     task.id === taskId ? { ...task, status: "completed" } : task
-  //   );
-  //   setTasks(updatedTasks);
-  // };
+  const handleTaskComplete = (taskId) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, status: "completed" } : task
+    );
+    setTasks(updatedTasks);
+  };
 
   const openTaskForm = () => {
     setIsTaskFormOpen(true);
