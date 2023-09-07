@@ -88,9 +88,9 @@ const TaskForm = ({ onTaskAdd }) => {
           value={formData.priority}
           onChange={handleFormChange}
         >
-          <MenuItem value="low">Low</MenuItem>
-          <MenuItem value="medium">Medium</MenuItem>
-          <MenuItem value="high">High</MenuItem>
+          <MenuItem value={1}>Low</MenuItem>
+          <MenuItem value={2}>Medium</MenuItem>
+          <MenuItem value={3}>High</MenuItem>
         </Select>
       </label>
       <label>

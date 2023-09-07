@@ -3,7 +3,14 @@ import { useState } from "react";
 
 const TaskRow = ({ task, onUpdateStatus }) => {
   const { id, title, description, dueDate, priority, assignee, status } = task;
+
   const [selectedStatus, setSelectedStatus] = useState(status);
+
+  const stringPriority = () => {
+    if (priority == 1) return "Low";
+    if (priority == 2) return "Medium";
+    if (priority == 3) return "High";
+  };
 
   const handleStatusChange = (e) => {
     const newStatus = e.target.value;
@@ -12,18 +19,32 @@ const TaskRow = ({ task, onUpdateStatus }) => {
     onUpdateStatus(id, newStatus);
   };
 
+  //  CSS class based on the selectedStatus
+  const statusClassName = () => {
+    switch (selectedStatus) {
+      case "in progress":
+        return "in-progress";
+      case "completed":
+        return "completed";
+      default:
+        return "";
+    }
+  };
+
+
   return (
     <TableRow
       key={id}
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
-      <TableCell align="right">{id}</TableCell>
       <TableCell align="right">{title}</TableCell>
       <TableCell align="right">{description}</TableCell>
       <TableCell align="right">{dueDate}</TableCell>
-      <TableCell align="right">{priority}</TableCell>
+      <TableCell align="right">{stringPriority()}</TableCell>
       <TableCell align="right">{assignee}</TableCell>
-      <TableCell align="right">{status}</TableCell>
+      <TableCell align="right" className={statusClassName()}>
+        {status}
+      </TableCell>
       <TableCell align="right">
         <Select
           value={selectedStatus}

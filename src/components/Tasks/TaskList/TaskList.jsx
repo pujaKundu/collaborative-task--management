@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import TableHeaders from "./TableHeaders";
 import Paper from "@mui/material/Paper";
 import TaskRow from "../TaskRow/TaskRow";
 import { Select, MenuItem } from "@mui/material";
+import SelectOptions from "./SelectOptions";
+import {
+  statusFilterItems,
+  sortByItems,
+  dueDateFilterItems,
+} from "../../../constants/taskMenuItems";
 
 const TaskList = ({ tasks }) => {
   const [taskList, setTaskList] = useState(tasks);
@@ -100,63 +104,41 @@ const TaskList = ({ tasks }) => {
       }
     });
 
-    // Update the displayed tasks
+    // Update tasks
     setFilteredTaskList(filteredTasks);
   };
 
   return (
-    <div>
-      <div>
-        <Select
-          value={selectedStatusFilter}
-          onChange={handleStatusFilterChange}
-          label="Status Filter"
-          name="status-filter"
-        >
-          <MenuItem value="all">All</MenuItem>
-          <MenuItem value="completed">Completed</MenuItem>
-          <MenuItem value="in progress">In Progress</MenuItem>
-          <MenuItem value="pending">Pending</MenuItem>
-        </Select>
-      </div>
-      <div>
-        <Select
-          value={selectedSortOption}
-          onChange={handleSortChange}
-          label="Sort By"
-          name="sort-by"
-        >
-          <MenuItem value="priority">Priority</MenuItem>
-          <MenuItem value="dueDate">Due Date</MenuItem>
-        </Select>
-      </div>
-      <div>
-        <Select
-          value={selectedDueDateFilter}
-          onChange={handleDueDateFilterChange}
-          label="Due Date Filter"
-          name="due-date-filter"
-        >
-          <MenuItem value="all">All</MenuItem>
-          <MenuItem value="today">Today</MenuItem>
-          <MenuItem value="overdue">Overdue</MenuItem>
-          <MenuItem value="upcoming">Upcoming</MenuItem>
-        </Select>
+    <>
+      <div className="filter-sort-container">
+        <div className="select-container">
+          <small>Filter by status</small>
+          <SelectOptions
+            selectValue={selectedStatusFilter}
+            onChangeHandler={handleStatusFilterChange}
+            menuItems={statusFilterItems}
+          />
+        </div>
+        <div className="select-container">
+          <small>Filter by due date</small>
+          <SelectOptions
+            selectValue={selectedDueDateFilter}
+            onChangeHandler={handleDueDateFilterChange}
+            menuItems={dueDateFilterItems}
+          />
+        </div>
+        <div className="select-container">
+          <small>Sort by priority or date</small>
+          <SelectOptions
+            selectValue={selectedSortOption}
+            onChangeHandler={handleSortChange}
+            menuItems={sortByItems}
+          />
+        </div>
       </div>
       <TableContainer component={Paper} className="table">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="right">ID</TableCell>
-              <TableCell align="right">Title</TableCell>
-              <TableCell align="right">Description</TableCell>
-              <TableCell align="right">Due date</TableCell>
-              <TableCell align="right">Priority</TableCell>
-              <TableCell align="right">Assignee</TableCell>
-              <TableCell align="right">Status</TableCell>
-              <TableCell align="right">Change status</TableCell>
-            </TableRow>
-          </TableHead>
+          <TableHeaders />
           <TableBody>
             {filteredTaskList.map((task) => (
               <TaskRow
@@ -168,7 +150,7 @@ const TaskList = ({ tasks }) => {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </>
   );
 };
 

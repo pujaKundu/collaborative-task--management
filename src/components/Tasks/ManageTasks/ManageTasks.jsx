@@ -46,8 +46,9 @@ const ManageTasks = () => {
   return (
     <>
       <Sidebar />
+
       <div className="table-container">
-        <h3>Manage tasks</h3>
+        <h3 className="page-title">Manage tasks</h3>
         <button onClick={openTaskForm} className="add-task-btn">
           Add Task
         </button>
