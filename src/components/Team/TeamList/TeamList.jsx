@@ -9,7 +9,7 @@ import TableCell from "@mui/material/TableCell";
 import TeamRow from "../TeamRow/TeamRow";
 import Paper from "@mui/material/Paper";
 
-const TeamList = ({teams}) => {
+const TeamList = ({ teams }) => {
   return (
     <>
       <Sidebar />
@@ -20,11 +20,12 @@ const TeamList = ({teams}) => {
               <TableCell align="right" className="table-header">
                 Team name
               </TableCell>
-              <TableCell align="right" className="table-header">
-                Assigned tasks
-              </TableCell>
+
               <TableCell align="right" className="table-header">
                 Team members
+              </TableCell>
+              <TableCell align="right" className="table-header">
+                Assigned tasks
               </TableCell>
             </TableRow>
           </TableHead>

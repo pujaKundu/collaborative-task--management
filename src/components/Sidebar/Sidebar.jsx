@@ -57,7 +57,7 @@ const Sidebar = (props) => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link to="/create-team">
+            <Link to="/teams">
               <Button
                 color="inherit"
                 style={{ textDecoration: "none", color: "#3B185F" }}

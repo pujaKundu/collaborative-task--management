@@ -27,13 +27,6 @@ const ManageTasks = () => {
     closeTaskForm();
   };
 
-  const handleTaskComplete = (taskId) => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === taskId ? { ...task, status: "completed" } : task
-    );
-    setTasks(updatedTasks);
-  };
-
   const openTaskForm = () => {
     setIsTaskFormOpen(true);
   };
