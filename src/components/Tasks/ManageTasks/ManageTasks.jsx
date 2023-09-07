@@ -4,7 +4,6 @@ import TaskForm from "../TaskForm/TaskForm";
 import TaskList from "../TaskList/TaskList";
 
 const ManageTasks = () => {
-  // const [tasks, setTasks] = useState([]);
   const [isTaskFormOpen, setIsTaskFormOpen] = useState(false);
 
   const [tasks, setTasks] = useState(() => {

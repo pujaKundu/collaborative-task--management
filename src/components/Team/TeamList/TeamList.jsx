@@ -7,20 +7,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TeamRow from "../TeamRow/TeamRow";
+import Paper from "@mui/material/Paper";
 
-const TeamList = () => {
-  const [teams, setTeams] = useState(() => {
-    const storedTeams = JSON.parse(localStorage.getItem("teams")) || [];
-    return storedTeams;
-  });
-
-  useEffect(() => {
-    localStorage.setItem("teams", JSON.stringify(teams));
-  }, [teams]);
-
-  const createTeam = (newTeam) => {
-    setTeams([...teams, { ...newTeam, id: teams.length + 1 }]);
-  };
+const TeamList = ({teams}) => {
   return (
     <>
       <Sidebar />
@@ -37,7 +26,6 @@ const TeamList = () => {
               <TableCell align="right" className="table-header">
                 Team members
               </TableCell>
-              
             </TableRow>
           </TableHead>
           <TableBody>
