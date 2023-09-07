@@ -24,6 +24,7 @@ const TeamRow = ({ team }) => {
       key={id}
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
+      <TableCell align="right">{id}</TableCell>
       <TableCell align="right">{name}</TableCell>
       <TableCell align="right">{memberNames}</TableCell>
       <TableCell align="right">{taskNames}</TableCell>

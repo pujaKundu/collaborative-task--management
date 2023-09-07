@@ -14,13 +14,14 @@ import {
 
 const TaskList = ({ tasks }) => {
   const [taskList, setTaskList] = useState(tasks);
-  const [filteredTaskList, setFilteredTaskList] = useState(tasks); // Initialize with all tasks
+  const [filteredTaskList, setFilteredTaskList] = useState(tasks); 
   const [selectedStatusFilter, setSelectedStatusFilter] = useState("all");
   const [selectedSortOption, setSelectedSortOption] = useState("priority");
   const [selectedDueDateFilter, setSelectedDueDateFilter] = useState("all");
 
+  const currentUser = localStorage.getItem("currentUser");
+
   useEffect(() => {
-    // Load tasks from localStorage when the component mounts
     const storedTasks = localStorage.getItem("tasks");
     if (storedTasks) {
       setTaskList(JSON.parse(storedTasks));
@@ -29,25 +30,30 @@ const TaskList = ({ tasks }) => {
   }, []);
 
   useEffect(() => {
-    // When the tasks prop changes, update the taskList state
     setTaskList(tasks);
-    setFilteredTaskList(tasks); // Reset filteredTaskList when tasks prop changes
+    setFilteredTaskList(tasks); 
   }, [tasks]);
 
   useEffect(() => {
-    // Save the taskList to localStorage whenever it changes
     localStorage.setItem("tasks", JSON.stringify(taskList));
   }, [taskList]);
 
   const handleUpdateStatus = (taskId, newStatus) => {
-    // Find the task in the list and update its status
     const updatedTaskList = taskList.map((task) =>
       task.id === taskId ? { ...task, status: newStatus } : task
     );
 
-    // Update the state with the new task list
     setTaskList(updatedTaskList);
-    setFilteredTaskList(updatedTaskList); // Update filteredTaskList as well
+    setFilteredTaskList(updatedTaskList); 
+  };
+
+  const handleUpdateAssignee = (taskId, newAssignee) => {
+    const updatedTaskList = taskList.map((task) =>
+      task.id === taskId ? { ...task, assignee: newAssignee } : task
+    );
+
+    setTaskList(updatedTaskList);
+    setFilteredTaskList(updatedTaskList);
   };
 
   const handleStatusFilterChange = (event) => {
@@ -144,6 +150,7 @@ const TaskList = ({ tasks }) => {
                 key={task?.id}
                 task={task}
                 onUpdateStatus={handleUpdateStatus}
+                onUpdateAssignee={handleUpdateAssignee}
               />
             ))}
           </TableBody>

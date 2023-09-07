@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import {
-  loginUser,
-  logoutUser,
-  registerUser,
-} from "./utils/userAuthenticationUtils";
+import { loginUser, registerUser } from "./utils/userAuthenticationUtils";
 
 import {
   CreateTeam,
@@ -13,7 +9,6 @@ import {
   ManageTeam,
   Sidebar,
   TaskForm,
-  TeamList,
   UserLogin,
   UserProfile,
   UserRegistration,
@@ -21,7 +16,6 @@ import {
 
 function App() {
   const [currentUser, setCurrentUser] = useState(() => {
-    // Load the current user from local storage (if available)
     const storedCurrentUser = JSON.parse(localStorage.getItem("currentUser"));
     return storedCurrentUser || null;
   });
@@ -34,7 +28,6 @@ function App() {
 
   useEffect(() => {
     try {
-      // Load user data from local storage
       const storedUsers = JSON.parse(localStorage.getItem("users"));
       setUsers(storedUsers);
     } catch (error) {
@@ -61,11 +54,6 @@ function App() {
     }
   };
 
-  const handleLogoutUser = () => {
-    logoutUser(setCurrentUser);
-    localStorage.removeItem("currentUser");
-  };
-
   return (
     <div id="root">
       <Router>
@@ -75,15 +63,7 @@ function App() {
             path="/register"
             element={<UserRegistration registerUser={handleRegisterUser} />}
           />
-          <Route
-            path="/homepage"
-            element={
-              <Sidebar
-                handleLogoutUser={handleLogoutUser}
-                currentUser={currentUser}
-              />
-            }
-          />
+          <Route path="/homepage" element={<Sidebar />} />
           <Route path="/profile" element={<UserProfile user={currentUser} />} />
           <Route path="/tasks" element={<ManageTasks />} />
 

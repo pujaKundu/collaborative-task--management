@@ -21,7 +21,9 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const drawerWidth = 240;
 
 const Sidebar = (props) => {
-  const { window, handleLogoutUser, currentUser } = props;
+  const { window } = props;
+  
+  const currentUser = localStorage.getItem("currentUser");
   console.log("currentUser", JSON.stringify(currentUser));
   const userId = currentUser?.id;
 
@@ -34,8 +36,7 @@ const Sidebar = (props) => {
   };
 
   const logout = () => {
-    handleLogoutUser();
-    // localStorage.clear();
+     localStorage.removeItem("currentUser");
     navigate("/");
   };
 

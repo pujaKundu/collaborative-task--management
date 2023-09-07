@@ -3,14 +3,22 @@ import { useState } from "react";
 
 const TaskForm = ({ onTaskAdd }) => {
   const users = JSON.parse(localStorage.getItem("users"));
+  const [teams, setTeams] = useState(() => {
+    const json = localStorage.getItem("teams");
+    if (!json) return [];
+    return JSON.parse(json);
+  });
+
   const initialPriority = "low";
   const initialAssignee = users && users.length > 0 ? users[0].username : "";
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     dueDate: "",
     priority: initialPriority,
     assignee: initialAssignee,
+    teamId: null,
   });
 
   const handleFormChange = (e) => {
@@ -32,6 +40,7 @@ const TaskForm = ({ onTaskAdd }) => {
       dueDate: "",
       priority: initialPriority,
       assignee: initialAssignee,
+      teamId: null,
     });
   };
   return (
@@ -107,6 +116,24 @@ const TaskForm = ({ onTaskAdd }) => {
           {users.map((user) => (
             <MenuItem key={user?.id} value={user?.username}>
               {user?.username}
+            </MenuItem>
+          ))}
+        </Select>
+      </label>
+      <label>
+        <p className="label-text">Team:</p>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Team"
+          name="teamId"
+          className="form-input"
+          value={formData.teamId}
+          onChange={handleFormChange}
+        >
+          {teams.map((team) => (
+            <MenuItem key={team?.id} value={team?.id}>
+              {team?.name}
             </MenuItem>
           ))}
         </Select>

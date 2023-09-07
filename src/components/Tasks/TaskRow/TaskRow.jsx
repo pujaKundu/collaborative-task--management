@@ -1,10 +1,11 @@
 import { MenuItem, Select, TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
 
-const TaskRow = ({ task, onUpdateStatus }) => {
-  const { id, title, description, dueDate, priority, assignee, status } = task;
+const TaskRow = ({ task, onUpdateStatus, onUpdateAssignee }) => {
+  const { id, title, description, dueDate, priority, assignee, status,teamId } = task;
 
   const [selectedStatus, setSelectedStatus] = useState(status);
+  const [selectedAssignee, setSelectedAssignee] = useState(assignee);
 
   const stringPriority = () => {
     if (priority == 1) return "Low";
@@ -19,7 +20,12 @@ const TaskRow = ({ task, onUpdateStatus }) => {
     onUpdateStatus(id, newStatus);
   };
 
-  //  CSS class based on the selectedStatus
+  const handleAssigneeChange = (e) => {
+    const newAssignee = e.target.value;
+    setSelectedAssignee(newAssignee);
+    onUpdateAssignee(id, newAssignee);
+  };
+
   const statusClassName = () => {
     switch (selectedStatus) {
       case "in progress":
@@ -31,7 +37,6 @@ const TaskRow = ({ task, onUpdateStatus }) => {
     }
   };
 
-
   return (
     <TableRow
       key={id}
@@ -41,6 +46,7 @@ const TaskRow = ({ task, onUpdateStatus }) => {
       <TableCell align="right">{description}</TableCell>
       <TableCell align="right">{dueDate}</TableCell>
       <TableCell align="right">{stringPriority()}</TableCell>
+      <TableCell align="right">{teamId}</TableCell>
       <TableCell align="right">{assignee}</TableCell>
       <TableCell align="right" className={statusClassName()}>
         {status}
@@ -57,6 +63,21 @@ const TaskRow = ({ task, onUpdateStatus }) => {
           <MenuItem value="completed">Completed</MenuItem>
         </Select>
       </TableCell>
+      {/* <TableCell align="right">
+        <Select
+          value={selectedAssignee}
+          onChange={handleAssigneeChange}
+          label="Assignee"
+          name="assignee"
+        >
+
+          {teamMembers.map((member) => (
+            <MenuItem key={member.id} value={member.id}>
+              {member.username}
+            </MenuItem>
+          ))}
+        </Select>
+      </TableCell> */}
     </TableRow>
   );
 };

@@ -13,6 +13,4 @@ export const loginUser = (users, credentials) => {
   return user;
 };
 
-export const logoutUser = (setCurrentUser) => {
-  setCurrentUser(null);
-};
+

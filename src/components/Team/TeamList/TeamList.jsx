@@ -18,6 +18,9 @@ const TeamList = ({ teams }) => {
           <TableHead>
             <TableRow>
               <TableCell align="right" className="table-header">
+                Team Id
+              </TableCell>
+              <TableCell align="right" className="table-header">
                 Team name
               </TableCell>
 

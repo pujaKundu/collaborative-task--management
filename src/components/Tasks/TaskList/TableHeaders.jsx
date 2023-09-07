@@ -19,6 +19,9 @@ const TableHeaders = () => {
           Priority
         </TableCell>
         <TableCell align="right" className="table-header">
+          Team
+        </TableCell>
+        <TableCell align="right" className="table-header">
           Assignee
         </TableCell>
         <TableCell align="right" className="table-header">
