@@ -18,24 +18,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 
+
 const drawerWidth = 240;
 
-// New Configuration Component
-const ConfigurationComponent = () => {
-  return (
-    <Box>
-      {/* Place your configuration content here */}
-      <Typography variant="h4">Configuration Component</Typography>
-    </Box>
-  );
-};
+const Sidebar = (props) => {
+  const { window, handleLogoutUser, currentUser } = props;
+  console.log("currentUser", JSON.stringify(currentUser));
+  const userId = currentUser?.id;
 
-const Homepage = (props) => {
-    const { window, handleLogoutUser, currentUser } = props;
-    console.log("currentUser", JSON.stringify(currentUser)); 
-    const userId = currentUser?.id;
-    
-    
   const navigate = useNavigate();
 
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -64,6 +54,17 @@ const Homepage = (props) => {
               >
                 <DashboardIcon sx={{ marginRight: "5px" }} />
                 Profile
+              </Button>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/tasks">
+              <Button
+                color="inherit"
+                style={{ textDecoration: "none", color: "#3B185F" }}
+              >
+                <DashboardIcon sx={{ marginRight: "5px" }} />
+                Manage tasks
               </Button>
             </Link>
           </ListItem>
@@ -111,6 +112,7 @@ const Homepage = (props) => {
             <MenuIcon />
           </IconButton>
         </Toolbar>
+        <p className="title"> Collaborative Task Manager</p>
       </AppBar>
       <Box
         component="nav"
@@ -150,19 +152,8 @@ const Homepage = (props) => {
           {drawer}
         </Drawer>
       </Box>
-      {/* <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-        }}
-          >
-             
-        <Toolbar />
-      </Box> */}
     </Box>
   );
 };
 
-export default Homepage;
+export default Sidebar;

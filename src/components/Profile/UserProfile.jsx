@@ -1,13 +1,13 @@
 import { Avatar, Paper, Typography } from "@mui/material";
-import Homepage from "../Homepage/Homepage";
+import Sidebar from "../Sidebar/Sidebar";
 
 const UserProfile = ({ user }) => {
   const { username, bio, profilePicture } = user || {};
   return (
     <>
-      <Homepage />
+      <Sidebar />
       <Paper className="profile">
-        <Avatar alt={username} src={profilePicture} className="" />
+        <Avatar alt={username} src={profilePicture} className="profile-img" />
         <Typography variant="h5" gutterBottom>
           {username}
         </Typography>
