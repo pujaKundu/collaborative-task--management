@@ -121,8 +121,13 @@ h4 {
 .add-task-btn {
   right: 0;
   position: absolute;
-
+  background-color: rgb(0, 119, 255);
+  color: #fff;
   margin-right: 5%;
+}
+
+.add-task-btn:hover {
+  background-color: rgb(4, 90, 189);
 }
 
 .filter-sort-container {

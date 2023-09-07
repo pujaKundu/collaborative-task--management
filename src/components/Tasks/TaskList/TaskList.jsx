@@ -5,7 +5,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHeaders from "./TableHeaders";
 import Paper from "@mui/material/Paper";
 import TaskRow from "../TaskRow/TaskRow";
-import { Select, MenuItem } from "@mui/material";
 import SelectOptions from "./SelectOptions";
 import {
   statusFilterItems,

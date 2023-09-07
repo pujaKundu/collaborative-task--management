@@ -3,13 +3,14 @@ export const registerUser = (users, newUser, setUsers) => {
   setUsers([...users, newUser]);
 };
 
-export const loginUser = (users, credentials, setCurrentUser) => {
+export const loginUser = (users, credentials) => {
   const user = users.find(
     (u) =>
       u.username === credentials?.username &&
       u?.password === credentials?.password
   );
-  setCurrentUser(user);
+  console.log(user);
+  return user;
 };
 
 export const logoutUser = (setCurrentUser) => {

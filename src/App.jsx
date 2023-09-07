@@ -8,17 +8,23 @@ import {
 } from "./utils/userAuthenticationUtils";
 
 import {
+  CreateTeam,
   ManageTasks,
+  ManageTeam,
   Sidebar,
   TaskForm,
+  TeamList,
   UserLogin,
   UserProfile,
   UserRegistration,
 } from "./components/index";
 
 function App() {
-  // const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(() => {
+    // Load the current user from local storage (if available)
+    const storedCurrentUser = JSON.parse(localStorage.getItem("currentUser"));
+    return storedCurrentUser || null;
+  });
 
   const [users, setUsers] = useState(() => {
     const json = localStorage.getItem("users");
@@ -37,20 +43,27 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Save user data to local storage
     localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
 
   const handleRegisterUser = (newUser) => {
     registerUser(users, newUser, setUsers);
+    setCurrentUser(newUser);
+    localStorage.setItem("currentUser", JSON.stringify(newUser));
   };
 
   const handleLoginUser = (credentials) => {
-    loginUser(users, credentials, setCurrentUser);
+    const loggedInUser = loginUser(users, credentials);
+
+    if (loggedInUser) {
+      setCurrentUser(loggedInUser);
+      localStorage.setItem("currentUser", JSON.stringify(loggedInUser));
+    }
   };
 
   const handleLogoutUser = () => {
     logoutUser(setCurrentUser);
+    localStorage.removeItem("currentUser");
   };
 
   return (
@@ -71,13 +84,12 @@ function App() {
               />
             }
           />
-          <Route
-            path="/profile/:id"
-            element={<UserProfile user={currentUser} />}
-          />
+          <Route path="/profile" element={<UserProfile user={currentUser} />} />
           <Route path="/tasks" element={<ManageTasks />} />
 
           <Route path="/add-task" element={<TaskForm />} />
+          <Route path="/create-team" element={<CreateTeam />} />
+          <Route path="/teams" element={<ManageTeam />} />
         </Routes>
       </Router>
     </div>

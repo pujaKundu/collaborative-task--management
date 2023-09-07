@@ -18,7 +18,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-
 const drawerWidth = 240;
 
 const Sidebar = (props) => {
@@ -47,13 +46,24 @@ const Sidebar = (props) => {
       <List>
         <List>
           <ListItem>
-            <Link to={`/profile/${userId}`}>
+            <Link to={`/profile`}>
               <Button
                 color="inherit"
                 style={{ textDecoration: "none", color: "#3B185F" }}
               >
                 <DashboardIcon sx={{ marginRight: "5px" }} />
                 Profile
+              </Button>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/create-team">
+              <Button
+                color="inherit"
+                style={{ textDecoration: "none", color: "#3B185F" }}
+              >
+                <DashboardIcon sx={{ marginRight: "5px" }} />
+                Manage teams
               </Button>
             </Link>
           </ListItem>
