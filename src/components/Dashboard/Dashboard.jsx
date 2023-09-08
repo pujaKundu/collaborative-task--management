@@ -77,9 +77,9 @@ const Dashboard = () => {
         <div className="dashboard">
           <div className="dashboard-element">
             <div>
-              <h4>Pending Tasks {pendingTasks.length}</h4>
+              <h4>Pending Tasks {pendingTasks?.length}</h4>
             </div>
-            {pendingTasks.length > 0 ? (
+            {pendingTasks?.length > 0 ? (
               renderTaskCards(pendingTasks)
             ) : (
               <p>No Pending Tasks</p>
@@ -88,9 +88,9 @@ const Dashboard = () => {
 
           <div className="dashboard-element">
             <div>
-              <h4>In Progress Tasks {inProgressTasks.length}</h4>
+              <h4>In Progress Tasks {inProgressTasks?.length}</h4>
             </div>
-            {inProgressTasks.length > 0 ? (
+            {inProgressTasks?.length > 0 ? (
               renderTaskCards(inProgressTasks)
             ) : (
               <p>No Tasks in Progress</p>
@@ -99,7 +99,7 @@ const Dashboard = () => {
 
           <div className="dashboard-element">
             <div>
-              <h4>Completed Tasks {completedTasks.length}</h4>
+              <h4>Completed Tasks {completedTasks?.length}</h4>
             </div>
             {completedTasks.length > 0 ? (
               renderTaskCards(completedTasks)

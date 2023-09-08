@@ -32,7 +32,7 @@ const CreateTeam = ({ createTeam, users, tasks }) => {
   };
 
   const handleSubmit = () => {
-    if (teamName && selectedMembers.length > 0 && selectedTasks.length > 0) {
+    if (teamName && selectedMembers?.length > 0 && selectedTasks?.length > 0) {
       const newTeam = {
         name: teamName,
         members: selectedMembers,

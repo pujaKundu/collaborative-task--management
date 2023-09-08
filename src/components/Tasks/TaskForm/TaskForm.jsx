@@ -10,7 +10,7 @@ const TaskForm = ({ onTaskAdd }) => {
   });
 
   const initialPriority = "low";
-  const initialAssignee = users && users.length > 0 ? users[0].username : "";
+
 
   const [formData, setFormData] = useState({
     title: "",

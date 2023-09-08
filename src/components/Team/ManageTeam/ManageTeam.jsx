@@ -26,7 +26,7 @@ const ManageTeam = () => {
   }, [teams]);
 
   const createTeam = (newTeam) => {
-    setTeams([...teams, { ...newTeam, id: teams.length + 1 }]);
+    setTeams([...teams, { ...newTeam, id: teams?.length + 1 }]);
   };
 
   const openTeamForm = () => {
