@@ -25,7 +25,7 @@ function App() {
 
   const [users, setUsers] = useState(() => {
     const json = localStorage.getItem("users");
-    if (!json) return [];
+    if (json === null) return [];
     return JSON.parse(json);
   });
 

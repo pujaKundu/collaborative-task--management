@@ -5,7 +5,7 @@ const TaskForm = ({ onTaskAdd }) => {
   const users = JSON.parse(localStorage.getItem("users"));
   const [teams, setTeams] = useState(() => {
     const json = localStorage.getItem("teams");
-    if (!json) return [];
+    if (json === null) return [];
     return JSON.parse(json);
   });
 

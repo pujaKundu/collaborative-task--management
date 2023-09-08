@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const [tasks, setTasks] = useState(() => {
     const json = localStorage.getItem("tasks");
-    if (!json) return [];
+    if (json === null) return [];
     return JSON.parse(json);
   });
 
