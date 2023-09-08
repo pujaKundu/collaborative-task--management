@@ -11,7 +11,7 @@ const ManageUserTeams = () => {
 
   const filteredTeams = teams.filter((team) =>
     team.members.includes(currentUser.id)
-  );
+  )||[]
 
   return (
     <>
