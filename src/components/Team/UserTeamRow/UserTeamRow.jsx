@@ -15,9 +15,6 @@ const UserTeamRow = ({ task, onUpdateStatus }) => {
 
   const [selectedStatus, setSelectedStatus] = useState(status);
 
-  console.log(selectedStatus);
-  console.log(status);
-
   const stringPriority = () => {
     if (priority == 1) return "Low";
     if (priority == 2) return "Medium";

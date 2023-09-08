@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { Card, CardContent, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Card, CardContent, Typography, Button, Collapse } from "@mui/material";
 
 const Dashboard = () => {
   const [pendingTasks, setPendingTasks] = useState([]);
   const [inProgressTasks, setInProgressTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
+  const [expandedTaskId, setExpandedTaskId] = useState(null);
 
   const [tasks, setTasks] = useState(() => {
     const json = localStorage.getItem("tasks");
@@ -39,12 +40,28 @@ const Dashboard = () => {
             <Typography variant="h6" component="div">
               {task.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {task.description}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Team: {task.teamId}
-            </Typography>
+            <Button
+              onClick={() => {
+                setExpandedTaskId(expandedTaskId === task.id ? null : task.id);
+              }}
+            >
+              View Details
+            </Button>
+            <Collapse
+              in={expandedTaskId === task.id}
+              timeout="auto"
+              unmountOnExit
+            >
+              <Typography variant="body2" color="text.secondary">
+                Description:{task.description}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Team: {task.teamId}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Due date: {task.dueDate}
+              </Typography>
+            </Collapse>
           </CardContent>
         </Card>
       </div>

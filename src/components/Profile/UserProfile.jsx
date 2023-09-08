@@ -2,7 +2,7 @@ import { Avatar, Paper, Typography } from "@mui/material";
 import Sidebar from "../Sidebar/Sidebar";
 
 const UserProfile = ({ user }) => {
-  console.log("user", user);
+ 
   const { username, bio, profilePicture } = user || {};
   return (
     <>
