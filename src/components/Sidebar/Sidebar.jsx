@@ -21,12 +21,13 @@ import Groups2Icon from "@mui/icons-material/Groups2";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 
+
 const drawerWidth = 250;
 
 const Sidebar = (props) => {
   const { window } = props;
 
-  const currentUser = localStorage.getItem("currentUser");
+  const currentUser = localStorage.getItem("currentUser")||{};
 
   const navigate = useNavigate();
 
