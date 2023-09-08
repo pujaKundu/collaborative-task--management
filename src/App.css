@@ -110,7 +110,9 @@ h4 {
   color: white;
   margin-top: 10px;
 }
-
+.signup-div {
+  margin-right: 3%;
+}
 /* profile styles */
 
 .profile {

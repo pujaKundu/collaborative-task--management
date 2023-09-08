@@ -48,7 +48,7 @@ const UserRegistration = ({ registerUser }) => {
       <h4>Create new user</h4>
       <form onSubmit={handleSubmit}>
         <div className="signup-form">
-          <div>
+          <div className="signup-div">
             <label>
               <p className="label-text">Username:</p>
               <TextField
