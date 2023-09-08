@@ -4,7 +4,11 @@
 - React JS
 - Material UI
 
-## Live site: Open the live site on Microsoft Edge or Mozilla Firefox browser
+
+## Live site: 
+```diff
+- Open the live site on Microsoft Edge or Mozilla Firefox browser
+```
  [Collaborative Task Manager](https://stunning-axolotl-c0388f.netlify.app) 
 
 ## Features
@@ -14,7 +18,3 @@
 - Create teams, assign tasks, members
 - View and manage user team tasks
 - Dashboard
-
-
-
-
