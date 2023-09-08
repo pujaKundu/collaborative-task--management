@@ -101,7 +101,7 @@ const Dashboard = () => {
             <div>
               <h4>Completed Tasks {completedTasks?.length}</h4>
             </div>
-            {completedTasks.length > 0 ? (
+            {completedTasks?.length > 0 ? (
               renderTaskCards(completedTasks)
             ) : (
               <p>No Completed Tasks</p>

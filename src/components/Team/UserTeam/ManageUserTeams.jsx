@@ -18,9 +18,7 @@ const ManageUserTeams = () => {
       <Sidebar />
       <h4>Manage my teams</h4>
       <div className="user-team-container">
-        {/* {filteredTeams.length == 0 && (
-          <p>No teams are currently assigned. Please create new team.</p>
-        )} */}
+        
         {filteredTeams.map((team) => (
           <div key={team.id} className="team">
             <Link to={`/my-teams/${team.id}`}>{team.name.toUpperCase()}</Link>

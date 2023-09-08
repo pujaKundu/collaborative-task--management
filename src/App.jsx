@@ -20,7 +20,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 function App() {
   const [currentUser, setCurrentUser] = useState(() => {
     const storedCurrentUser = JSON.parse(localStorage.getItem("currentUser"));
-    return storedCurrentUser || null;
+    return storedCurrentUser ;
   });
 
   const [users, setUsers] = useState(() => {
