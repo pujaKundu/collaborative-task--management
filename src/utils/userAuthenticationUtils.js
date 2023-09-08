@@ -1,5 +1,5 @@
 export const registerUser = (users, newUser, setUsers) => {
-  newUser.id = users.length + 1;
+  newUser.id = users?.length + 1;
   setUsers([...users, newUser]);
 };
 

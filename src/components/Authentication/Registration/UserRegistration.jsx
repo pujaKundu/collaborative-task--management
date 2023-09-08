@@ -93,50 +93,7 @@ const UserRegistration = ({ registerUser }) => {
               />
             </label>
           </div>
-          {/* <div>
-            <label>
-              <p className="label-text">Email:</p>
-              <TextField
-                name="email"
-                label="Email"
-                type="email"
-                className="form-input"
-                value={user.email}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              <p className="label-text">Address:</p>
-              <TextField
-                name="address"
-                label="Address"
-                className="form-input"
-                value={user.address}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              <p className="label-text">Phone Number:</p>
-              <TextField
-                name="phoneNumber"
-                label="Phone Number"
-                type="tel"
-                className="form-input"
-                value={user.phoneNumber}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              <p className="label-text">Designation:</p>
-              <TextField
-                name="designation"
-                label="Designation"
-                className="form-input"
-                value={user.designation}
-                onChange={handleInputChange}
-              />
-            </label>
-          </div> */}
+         
         </div>
         <button type="submit" className="form-btn">
           Sign up
