@@ -30,7 +30,8 @@ const UserLogin = ({ loginUser }) => {
   };
 
   return (
-    <div>
+    <div className="bg-color">
+      <h3>Collaborative Task Manager</h3>
       <h4>Sign in to your account</h4>
       <form onSubmit={handleSubmit} className="form">
         <label>

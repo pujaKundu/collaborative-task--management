@@ -67,7 +67,7 @@ function App() {
             path="/register"
             element={<UserRegistration registerUser={handleRegisterUser} />}
           />
-          <Route path="/homepage" element={<Sidebar />} />
+          <Route path="/homepage" element={<Dashboard />} />
           <Route path="/profile" element={<UserProfile user={currentUser} />} />
           <Route path="/tasks" element={<ManageTasks />} />
           <Route path="/add-task" element={<TaskForm />} />

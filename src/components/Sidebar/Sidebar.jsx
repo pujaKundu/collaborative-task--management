@@ -12,20 +12,21 @@ import {
   Toolbar,
 } from "@mui/material";
 
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
-import Dashboard from "../Dashboard/Dashboard";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import FolderSharedIcon from "@mui/icons-material/FolderShared";
+import Groups2Icon from "@mui/icons-material/Groups2";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 
 const drawerWidth = 250;
 
 const Sidebar = (props) => {
   const { window } = props;
-  
+
   const currentUser = localStorage.getItem("currentUser");
- 
-  const userId = currentUser?.id;
 
   const navigate = useNavigate();
 
@@ -36,7 +37,7 @@ const Sidebar = (props) => {
   };
 
   const logout = () => {
-     localStorage.removeItem("currentUser");
+    localStorage.removeItem("currentUser");
     navigate("/");
   };
 
@@ -52,29 +53,19 @@ const Sidebar = (props) => {
                 color="inherit"
                 style={{ textDecoration: "none", color: "#3B185F" }}
               >
-                <DashboardIcon sx={{ marginRight: "5px" }} />
+                <AccountCircleIcon sx={{ marginRight: "5px" }} />
                 Profile
               </Button>
             </Link>
           </ListItem>
-          <ListItem>
-            <Link to="/teams">
-              <Button
-                color="inherit"
-                style={{ textDecoration: "none", color: "#3B185F" }}
-              >
-                <DashboardIcon sx={{ marginRight: "5px" }} />
-                All teams
-              </Button>
-            </Link>
-          </ListItem>
+
           <ListItem>
             <Link to="/my-teams">
               <Button
                 color="inherit"
                 style={{ textDecoration: "none", color: "#3B185F" }}
               >
-                <DashboardIcon sx={{ marginRight: "5px" }} />
+                <Groups2Icon sx={{ marginRight: "5px" }} />
                 My teams
               </Button>
             </Link>
@@ -85,8 +76,30 @@ const Sidebar = (props) => {
                 color="inherit"
                 style={{ textDecoration: "none", color: "#3B185F" }}
               >
-                <DashboardIcon sx={{ marginRight: "5px" }} />
+                <SettingsApplicationsIcon sx={{ marginRight: "5px" }} />
                 Manage tasks
+              </Button>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/teams">
+              <Button
+                color="inherit"
+                style={{ textDecoration: "none", color: "#3B185F" }}
+              >
+                <FolderSharedIcon sx={{ marginRight: "5px" }} />
+                All teams
+              </Button>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to={`/homepage`}>
+              <Button
+                color="inherit"
+                style={{ textDecoration: "none", color: "#3B185F" }}
+              >
+                <DashboardIcon sx={{ marginRight: "5px" }} />
+                Dashboard
               </Button>
             </Link>
           </ListItem>
@@ -174,8 +187,6 @@ const Sidebar = (props) => {
           {drawer}
         </Drawer>
       </Box>
-
-      <Dashboard />
     </Box>
   );
 };

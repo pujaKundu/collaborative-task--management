@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardContent, Typography, Button, Collapse } from "@mui/material";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Dashboard = () => {
   const [pendingTasks, setPendingTasks] = useState([]);
@@ -69,43 +70,46 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard-container">
-      <h3>Dashboard</h3>
-      <div className="dashboard">
-        <div className="dashboard-element">
-          <div>
-            <h4>Pending Tasks {pendingTasks.length}</h4>
+    <>
+      <Sidebar />
+      <div className="dashboard-container">
+        <h3>Dashboard</h3>
+        <div className="dashboard">
+          <div className="dashboard-element">
+            <div>
+              <h4>Pending Tasks {pendingTasks.length}</h4>
+            </div>
+            {pendingTasks.length > 0 ? (
+              renderTaskCards(pendingTasks)
+            ) : (
+              <p>No Pending Tasks</p>
+            )}
           </div>
-          {pendingTasks.length > 0 ? (
-            renderTaskCards(pendingTasks)
-          ) : (
-            <p>No Pending Tasks</p>
-          )}
-        </div>
 
-        <div className="dashboard-element">
-          <div>
-            <h4>In Progress Tasks {inProgressTasks.length}</h4>
+          <div className="dashboard-element">
+            <div>
+              <h4>In Progress Tasks {inProgressTasks.length}</h4>
+            </div>
+            {inProgressTasks.length > 0 ? (
+              renderTaskCards(inProgressTasks)
+            ) : (
+              <p>No Tasks in Progress</p>
+            )}
           </div>
-          {inProgressTasks.length > 0 ? (
-            renderTaskCards(inProgressTasks)
-          ) : (
-            <p>No Tasks in Progress</p>
-          )}
-        </div>
 
-        <div className="dashboard-element">
-          <div>
-            <h4>Completed Tasks {completedTasks.length}</h4>
+          <div className="dashboard-element">
+            <div>
+              <h4>Completed Tasks {completedTasks.length}</h4>
+            </div>
+            {completedTasks.length > 0 ? (
+              renderTaskCards(completedTasks)
+            ) : (
+              <p>No Completed Tasks</p>
+            )}
           </div>
-          {completedTasks.length > 0 ? (
-            renderTaskCards(completedTasks)
-          ) : (
-            <p>No Completed Tasks</p>
-          )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
