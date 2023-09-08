@@ -11,10 +11,7 @@ const UserRegistration = ({ registerUser }) => {
     password: "",
     profilePicture: "",
     bio: "",
-    email: "",
-    address: "", 
-    phoneNumber: "", 
-    designation: "", 
+   
   });
 
   const handleInputChange = (e) => {
@@ -33,10 +30,7 @@ const UserRegistration = ({ registerUser }) => {
       password: "",
       profilePicture: "",
       bio: "",
-      email: "",
-      address: "",
-      phoneNumber: "",
-      designation: "",
+     
     });
     alert("Account created successfully");
     navigate("/");
@@ -99,7 +93,7 @@ const UserRegistration = ({ registerUser }) => {
               />
             </label>
           </div>
-          <div>
+          {/* <div>
             <label>
               <p className="label-text">Email:</p>
               <TextField
@@ -142,7 +136,7 @@ const UserRegistration = ({ registerUser }) => {
                 onChange={handleInputChange}
               />
             </label>
-          </div>
+          </div> */}
         </div>
         <button type="submit" className="form-btn">
           Sign up

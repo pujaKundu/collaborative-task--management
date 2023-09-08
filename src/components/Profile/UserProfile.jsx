@@ -14,15 +14,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 const UserProfile = ({ user }) => {
-  const {
-    username,
-    bio,
-    profilePicture,
-    email,
-    designation,
-    phoneNumber,
-    address,
-  } = user || {};
+  const { username, bio, profilePicture } = user || {};
   return (
     <>
       <Sidebar />
@@ -58,42 +50,6 @@ const UserProfile = ({ user }) => {
               component="div"
             >
               {bio}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="div"
-              className="info"
-            >
-              <WorkIcon className="icon" />
-              {designation}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="div"
-              className="info"
-            >
-              <LocalPhoneIcon className="icon" />
-              {phoneNumber}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="div"
-              className="info"
-            >
-              <AlternateEmailIcon className="icon" />
-              {email}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="div"
-              className="info"
-            >
-              <LocationOnIcon className="icon" />
-              {address}
             </Typography>
           </CardContent>
         </Box>
