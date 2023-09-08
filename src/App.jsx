@@ -7,7 +7,6 @@ import {
   CreateTeam,
   ManageTasks,
   ManageTeam,
-  Sidebar,
   TaskForm,
   UserLogin,
   UserProfile,
