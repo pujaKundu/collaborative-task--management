@@ -18,6 +18,12 @@ import UserTeamDetail from "./components/Team/UserTeamDetail/UserTeamDetail";
 import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
+  const [users, setUsers] = useState(() => {
+    const json = localStorage.getItem("users");
+    if (json === null) return [];
+    return JSON.parse(json);
+  });
+
   useEffect(() => {
     try {
       const storedUsers = JSON.parse(localStorage.getItem("users"));
@@ -30,12 +36,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
-
-  const [users, setUsers] = useState(() => {
-    const json = localStorage.getItem("users");
-    if (json === null) return [];
-    return JSON.parse(json);
-  });
 
   const [currentUser, setCurrentUser] = useState(() => {
     const storedCurrentUser = JSON.parse(localStorage.getItem("currentUser"));
