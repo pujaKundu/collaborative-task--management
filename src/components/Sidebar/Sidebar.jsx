@@ -10,15 +10,15 @@ import {
   List,
   ListItem,
   Toolbar,
-  Typography,
 } from "@mui/material";
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
+import Dashboard from "../Dashboard/Dashboard";
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const Sidebar = (props) => {
   const { window } = props;
@@ -64,7 +64,7 @@ const Sidebar = (props) => {
                 style={{ textDecoration: "none", color: "#3B185F" }}
               >
                 <DashboardIcon sx={{ marginRight: "5px" }} />
-                Manage all teams
+                All teams
               </Button>
             </Link>
           </ListItem>
@@ -75,7 +75,7 @@ const Sidebar = (props) => {
                 style={{ textDecoration: "none", color: "#3B185F" }}
               >
                 <DashboardIcon sx={{ marginRight: "5px" }} />
-                Manage my teams
+                My teams
               </Button>
             </Link>
           </ListItem>
@@ -174,6 +174,8 @@ const Sidebar = (props) => {
           {drawer}
         </Drawer>
       </Box>
+
+      <Dashboard />
     </Box>
   );
 };

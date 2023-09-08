@@ -15,6 +15,7 @@ import {
 } from "./components/index";
 import ManageUserTeams from "./components/Team/UserTeam/ManageUserTeams";
 import UserTeamDetail from "./components/Team/UserTeamDetail/UserTeamDetail";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(() => {
@@ -58,6 +59,7 @@ function App() {
 
   return (
     <div id="root">
+      
       <Router>
         <Routes>
           <Route path="/" element={<UserLogin loginUser={handleLoginUser} />} />
