@@ -14,7 +14,7 @@ const Dashboard = () => {
     return JSON.parse(json);
   });
 
-  // Filter tasks based on their status
+  // Filter tasks by status
   useEffect(() => {
     const pending = tasks.filter((task) => task.status === "pending");
     const inProgress = tasks.filter((task) => task.status === "in progress");

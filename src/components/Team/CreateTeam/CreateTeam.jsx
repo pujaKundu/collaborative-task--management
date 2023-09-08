@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import Sidebar from "../../Sidebar/Sidebar";
-import { Checkbox, FormControlLabel, MenuItem, Select, TextField } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  TextField,
+} from "@mui/material";
 
 const CreateTeam = ({ createTeam, users, tasks }) => {
   const [teamName, setTeamName] = useState("");
@@ -27,23 +31,8 @@ const CreateTeam = ({ createTeam, users, tasks }) => {
     }
   };
 
-  // const handleSubmit = () => {
-  //   if (teamName && selectedMembers.length > 0 && selectedTasks.length > 0) {
-  //     const newTeam = {
-  //       name: teamName,
-  //       members: selectedMembers,
-  //       tasks: selectedTasks,
-  //     };
-  //     createTeam(newTeam);
-  //     setTeamName("");
-  //     setSelectedMembers([]);
-  //     setSelectedTasks([]);
-  //   }
-  // };
-
   const handleSubmit = () => {
     if (teamName && selectedMembers.length > 0 && selectedTasks.length > 0) {
-      // Create a new team with members and tasks
       const newTeam = {
         name: teamName,
         members: selectedMembers,
@@ -55,16 +44,15 @@ const CreateTeam = ({ createTeam, users, tasks }) => {
         if (selectedTasks.includes(task.id)) {
           return {
             ...task,
-            assignee: selectedMembers, // Assign selected team members
+            assignee: selectedMembers,
           };
         }
         return task;
       });
 
-      // Call the createTeam function with the updated tasks
       createTeam(newTeam, updatedTasks);
 
-      // Reset form fields
+      // Reset form
       setTeamName("");
       setSelectedMembers([]);
       setSelectedTasks([]);
@@ -119,36 +107,6 @@ const CreateTeam = ({ createTeam, users, tasks }) => {
           ))}
         </div>
 
-        {/* <div>
-          <p className="label-text">Select Team Members:</p>
-          <Select
-            multiple
-            value={selectedMembers}
-            onChange={handleMemberChange}
-            className="form-input"
-          >
-            {users.map((user) => (
-              <MenuItem key={user.id} value={user.id}>
-                {user.username}
-              </MenuItem>
-            ))}
-          </Select>
-        </div>
-        <div>
-          <p className="label-text">Select Tasks:</p>
-          <Select
-            multiple
-            value={selectedTasks}
-            onChange={handleTaskChange}
-            className="form-input"
-          >
-            {tasks.map((task) => (
-              <MenuItem key={task.id} value={task.id}>
-                {task.title}
-              </MenuItem>
-            ))}
-          </Select>
-        </div> */}
         <button onClick={handleSubmit} className="create-team-btn">
           Create Team
         </button>

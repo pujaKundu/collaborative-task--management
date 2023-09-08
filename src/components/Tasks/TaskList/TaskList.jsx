@@ -51,7 +51,7 @@ const TaskList = ({ tasks }) => {
     const selectedStatus = event.target.value;
     setSelectedStatusFilter(selectedStatus);
 
-    // Filter tasks based on status and due date
+    // Filter tasks by status and due date
     const filteredTasks = taskList.filter((task) => {
       if (selectedStatus === "all") {
         return true; // Show all tasks
@@ -66,7 +66,7 @@ const TaskList = ({ tasks }) => {
     const selectedSort = event.target.value;
     setSelectedSortOption(selectedSort);
 
-    // Sort tasks based on the selected criteria
+    // Sort tasks by priority and duedate
     const sortedTasks = [...filteredTaskList]; // Sort the filteredTaskList
     sortedTasks.sort((a, b) => {
       if (selectedSort === "priority") {
@@ -84,7 +84,7 @@ const TaskList = ({ tasks }) => {
     const selectedDueDate = event.target.value;
     setSelectedDueDateFilter(selectedDueDate);
 
-    // Filter tasks based on due date
+    // Filter tasks by due date
     const filteredTasks = taskList.filter((task) => {
       if (selectedDueDate === "all") {
         return true;

@@ -16,20 +16,50 @@
   margin-left: 6%;
 }
 
-.bg-color{
+.bg-color {
   background: linear-gradient(to bottom, #cbf4f7, #ede3f1);
 }
 h4 {
   color: rgb(92, 46, 134);
 }
-.info{
+.info {
   display: flex;
   align-items: center;
 }
 
-.icon{
+.icon {
   margin-right: 2%;
 }
+.link-text {
+  margin-top: 10px;
+  color: blue;
+}
+
+.in-progress {
+  color: rgb(212, 112, 19) !important;
+  font-weight: bold !important;
+}
+
+.completed {
+  color: rgb(8, 128, 48) !important;
+  font-weight: bold !important;
+}
+.green-card {
+  margin: 5%;
+  background-color: rgb(213, 248, 229) !important;
+  width: 250px;
+}
+.yellow-card {
+  margin: 5%;
+  background-color: rgb(239, 243, 185) !important;
+  width: 250px;
+}
+.orange-card {
+  margin: 5%;
+  background-color: rgb(253, 231, 218) !important;
+  width: 250px;
+}
+/* table styles */
 .table-container {
   margin-top: 10%;
 }
@@ -51,12 +81,12 @@ h4 {
   text-align: left;
 }
 
+/* form styles */
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 }
 .signup-form {
   display: flex;
@@ -81,10 +111,7 @@ h4 {
   margin-top: 10px;
 }
 
-.link-text {
-  margin-top: 10px;
-  color: blue;
-}
+/* profile styles */
 
 .profile {
   width: 500px;
@@ -99,7 +126,7 @@ h4 {
   width: 300px;
   height: 300px;
 }
-
+/* modal styles */
 .modal {
   position: fixed;
   z-index: 1;
@@ -135,7 +162,7 @@ h4 {
   text-decoration: none;
   cursor: pointer;
 }
-
+/* team styles */
 .team-container {
   display: flex;
   flex-direction: column;
@@ -173,16 +200,6 @@ h4 {
   display: flex;
   margin-left: 20%;
   margin-bottom: 5%;
-}
-
-.in-progress {
-  color: rgb(212, 112, 19) !important;
-  font-weight: bold !important;
-}
-
-.completed {
-  color: rgb(8, 128, 48) !important;
-  font-weight: bold !important;
 }
 
 .team-container {
@@ -234,19 +251,4 @@ h4 {
 }
 .dashboard-element {
   margin: 5%;
-}
-.green-card {
-  margin: 5%;
-  background-color: rgb(213, 248, 229) !important;
-  width: 250px;
-}
-.yellow-card {
-  margin: 5%;
-  background-color: rgb(239, 243, 185) !important;
-  width: 250px;
-}
-.orange-card {
-  margin: 5%;
-  background-color: rgb(253, 231, 218) !important;
-  width: 250px;
 }

@@ -11,10 +11,10 @@ const UserRegistration = ({ registerUser }) => {
     password: "",
     profilePicture: "",
     bio: "",
-    email: "", // Add email field
-    address: "", // Add address field
-    phoneNumber: "", // Add phone number field
-    designation: "", // Add designation field
+    email: "",
+    address: "", 
+    phoneNumber: "", 
+    designation: "", 
   });
 
   const handleInputChange = (e) => {
