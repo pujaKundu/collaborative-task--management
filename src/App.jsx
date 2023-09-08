@@ -25,6 +25,10 @@ function App() {
   });
 
   useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(users));
+  }, [users]);
+
+  useEffect(() => {
     try {
       const storedUsers = JSON.parse(localStorage.getItem("users"));
       setUsers(storedUsers);
@@ -32,10 +36,6 @@ function App() {
       console.error("LocalStorage error:", error);
     }
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(users));
-  }, [users]);
 
   const [currentUser, setCurrentUser] = useState(() => {
     const storedCurrentUser = JSON.parse(localStorage.getItem("currentUser"));
