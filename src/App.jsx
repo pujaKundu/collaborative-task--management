@@ -18,17 +18,6 @@ import UserTeamDetail from "./components/Team/UserTeamDetail/UserTeamDetail";
 import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(() => {
-    const storedCurrentUser = JSON.parse(localStorage.getItem("currentUser"));
-    return storedCurrentUser ;
-  });
-
-  const [users, setUsers] = useState(() => {
-    const json = localStorage.getItem("users");
-    if (json === null) return [];
-    return JSON.parse(json);
-  });
-
   useEffect(() => {
     try {
       const storedUsers = JSON.parse(localStorage.getItem("users"));
@@ -41,6 +30,17 @@ function App() {
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
+
+  const [users, setUsers] = useState(() => {
+    const json = localStorage.getItem("users");
+    if (json === null) return [];
+    return JSON.parse(json);
+  });
+
+  const [currentUser, setCurrentUser] = useState(() => {
+    const storedCurrentUser = JSON.parse(localStorage.getItem("currentUser"));
+    return storedCurrentUser;
+  });
 
   const handleRegisterUser = (newUser) => {
     registerUser(users, newUser, setUsers);
@@ -59,7 +59,6 @@ function App() {
 
   return (
     <div id="root">
-      
       <Router>
         <Routes>
           <Route path="/" element={<UserLogin loginUser={handleLoginUser} />} />
