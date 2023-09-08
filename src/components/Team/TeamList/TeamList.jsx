@@ -13,32 +13,35 @@ const TeamList = ({ teams }) => {
   return (
     <>
       <Sidebar />
-      <TableContainer component={Paper} className="table">
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="right" className="table-header">
-                Team Id
-              </TableCell>
-              <TableCell align="right" className="table-header">
-                Team name
-              </TableCell>
+      <div className="team-container">
+        <h4>All Team Details</h4>
+        <TableContainer component={Paper} className="team-table">
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="right" className="table-header">
+                  Team Id
+                </TableCell>
+                <TableCell align="right" className="table-header">
+                  Team name
+                </TableCell>
 
-              <TableCell align="right" className="table-header">
-                Team members
-              </TableCell>
-              <TableCell align="right" className="table-header">
-                Assigned tasks
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {teams.map((team) => (
-              <TeamRow key={team?.id} team={team} />
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                <TableCell align="right" className="table-header">
+                  Team members
+                </TableCell>
+                <TableCell align="right" className="table-header">
+                  Assigned tasks
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {teams.map((team) => (
+                <TeamRow key={team?.id} team={team} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     </>
   );
 };

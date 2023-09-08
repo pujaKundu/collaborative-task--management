@@ -27,19 +27,50 @@ const CreateTeam = ({ createTeam, users, tasks }) => {
     }
   };
 
+  // const handleSubmit = () => {
+  //   if (teamName && selectedMembers.length > 0 && selectedTasks.length > 0) {
+  //     const newTeam = {
+  //       name: teamName,
+  //       members: selectedMembers,
+  //       tasks: selectedTasks,
+  //     };
+  //     createTeam(newTeam);
+  //     setTeamName("");
+  //     setSelectedMembers([]);
+  //     setSelectedTasks([]);
+  //   }
+  // };
+
   const handleSubmit = () => {
     if (teamName && selectedMembers.length > 0 && selectedTasks.length > 0) {
+      // Create a new team with members and tasks
       const newTeam = {
         name: teamName,
         members: selectedMembers,
         tasks: selectedTasks,
       };
-      createTeam(newTeam);
+
+      // Assign team members to selected tasks
+      const updatedTasks = tasks.map((task) => {
+        if (selectedTasks.includes(task.id)) {
+          return {
+            ...task,
+            assignee: selectedMembers, // Assign selected team members
+          };
+        }
+        return task;
+      });
+
+      // Call the createTeam function with the updated tasks
+      createTeam(newTeam, updatedTasks);
+
+      // Reset form fields
       setTeamName("");
       setSelectedMembers([]);
       setSelectedTasks([]);
     }
   };
+
   return (
     <>
       <Sidebar />

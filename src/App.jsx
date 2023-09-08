@@ -13,6 +13,8 @@ import {
   UserProfile,
   UserRegistration,
 } from "./components/index";
+import ManageUserTeams from "./components/Team/UserTeam/ManageUserTeams";
+import UserTeamDetail from "./components/Team/UserTeamDetail/UserTeamDetail";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(() => {
@@ -66,10 +68,11 @@ function App() {
           <Route path="/homepage" element={<Sidebar />} />
           <Route path="/profile" element={<UserProfile user={currentUser} />} />
           <Route path="/tasks" element={<ManageTasks />} />
-
           <Route path="/add-task" element={<TaskForm />} />
           <Route path="/create-team" element={<CreateTeam />} />
           <Route path="/teams" element={<ManageTeam />} />
+          <Route path="/my-teams" element={<ManageUserTeams />} />
+          <Route path="/my-teams/:id" element={<UserTeamDetail />} />
         </Routes>
       </Router>
     </div>

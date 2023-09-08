@@ -1,10 +1,22 @@
 import { MenuItem, Select, TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
 
-const TaskRow = ({ task, onUpdateStatus }) => {
-  const { id, title, description, dueDate, priority, assignee, status,teamId } = task;
+const UserTeamRow = ({ task, onUpdateStatus }) => {
+  const {
+    id,
+    title,
+    description,
+    dueDate,
+    priority,
+    assignee,
+    status,
+    teamId,
+  } = task;
 
   const [selectedStatus, setSelectedStatus] = useState(status);
+
+  console.log(selectedStatus);
+  console.log(status);
 
   const stringPriority = () => {
     if (priority == 1) return "Low";
@@ -56,9 +68,8 @@ const TaskRow = ({ task, onUpdateStatus }) => {
           <MenuItem value="completed">Completed</MenuItem>
         </Select>
       </TableCell>
-   
     </TableRow>
   );
 };
 
-export default TaskRow;
+export default UserTeamRow;

@@ -14,12 +14,12 @@ import {
 
 const TaskList = ({ tasks }) => {
   const [taskList, setTaskList] = useState(tasks);
-  const [filteredTaskList, setFilteredTaskList] = useState(tasks); 
+  const [filteredTaskList, setFilteredTaskList] = useState(tasks);
   const [selectedStatusFilter, setSelectedStatusFilter] = useState("all");
   const [selectedSortOption, setSelectedSortOption] = useState("priority");
   const [selectedDueDateFilter, setSelectedDueDateFilter] = useState("all");
 
-  const currentUser = localStorage.getItem("currentUser");
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   useEffect(() => {
     const storedTasks = localStorage.getItem("tasks");
@@ -31,7 +31,7 @@ const TaskList = ({ tasks }) => {
 
   useEffect(() => {
     setTaskList(tasks);
-    setFilteredTaskList(tasks); 
+    setFilteredTaskList(tasks);
   }, [tasks]);
 
   useEffect(() => {
@@ -41,15 +41,6 @@ const TaskList = ({ tasks }) => {
   const handleUpdateStatus = (taskId, newStatus) => {
     const updatedTaskList = taskList.map((task) =>
       task.id === taskId ? { ...task, status: newStatus } : task
-    );
-
-    setTaskList(updatedTaskList);
-    setFilteredTaskList(updatedTaskList); 
-  };
-
-  const handleUpdateAssignee = (taskId, newAssignee) => {
-    const updatedTaskList = taskList.map((task) =>
-      task.id === taskId ? { ...task, assignee: newAssignee } : task
     );
 
     setTaskList(updatedTaskList);
@@ -113,6 +104,10 @@ const TaskList = ({ tasks }) => {
     setFilteredTaskList(filteredTasks);
   };
 
+  if (!currentUser) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <div className="filter-sort-container">
@@ -150,7 +145,6 @@ const TaskList = ({ tasks }) => {
                 key={task?.id}
                 task={task}
                 onUpdateStatus={handleUpdateStatus}
-                onUpdateAssignee={handleUpdateAssignee}
               />
             ))}
           </TableBody>

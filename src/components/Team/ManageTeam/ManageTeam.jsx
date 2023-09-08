@@ -40,7 +40,6 @@ const ManageTeam = () => {
     <>
       <Sidebar />
       <div className="team-container">
-        <h3 className="page-title">Manage teams</h3>
         <button onClick={openTeamForm} className="add-team-btn">
           Add Team
         </button>

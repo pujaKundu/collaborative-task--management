@@ -17,7 +17,7 @@ const TaskForm = ({ onTaskAdd }) => {
     description: "",
     dueDate: "",
     priority: initialPriority,
-    assignee: initialAssignee,
+    assignee: [],
     teamId: null,
   });
 
@@ -39,7 +39,7 @@ const TaskForm = ({ onTaskAdd }) => {
       description: "",
       dueDate: "",
       priority: initialPriority,
-      assignee: initialAssignee,
+      assignee: [],
       teamId: null,
     });
   };

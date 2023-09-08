@@ -24,7 +24,7 @@ const Sidebar = (props) => {
   const { window } = props;
   
   const currentUser = localStorage.getItem("currentUser");
-  console.log("currentUser", JSON.stringify(currentUser));
+ 
   const userId = currentUser?.id;
 
   const navigate = useNavigate();
@@ -64,7 +64,18 @@ const Sidebar = (props) => {
                 style={{ textDecoration: "none", color: "#3B185F" }}
               >
                 <DashboardIcon sx={{ marginRight: "5px" }} />
-                Manage teams
+                Manage all teams
+              </Button>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/my-teams">
+              <Button
+                color="inherit"
+                style={{ textDecoration: "none", color: "#3B185F" }}
+              >
+                <DashboardIcon sx={{ marginRight: "5px" }} />
+                Manage my teams
               </Button>
             </Link>
           </ListItem>
